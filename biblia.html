@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Versículos da Bíblia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #5c6bc0;
+            color: white;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #3f51b5;
+        }
+
+        .versiculo {
+            background-color: #fff;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        footer {
+            margin-top: 40px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Consulta de Versículos da Bíblia</h1>
+    <input type="text" id="busca" placeholder="Digite um livro, capítulo e versículo (Ex: João 3:16)">
+    <button onclick="buscarVersiculo()">Buscar</button>
+
+    <div id="resultado" class="versiculo"></div>
+
+    <footer>
+        <p>&copy; 2024 Consulta de Versículos</p>
+    </footer>
+
+    <script>
+        const versiculos = {
+            "João 3:16": "Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, para que todo aquele que nele crê não pereça, mas tenha a vida eterna.",
+            "Salmos 23:1": "O Senhor é o meu pastor, nada me faltará.",
+            "Filipenses 4:13": "Posso todas as coisas em Cristo que me fortalece."
+        };
+
+        function buscarVersiculo() {
+            const busca = document.getElementById('busca').value.trim();
+            const resultado = document.getElementById('resultado');
+
+            if (versiculos[busca]) {
+                resultado.textContent = versiculos[busca];
+            } else {
+                resultado.textContent = "Versículo não encontrado. Tente outro.";
+            }
+        }
+    </script>
+
+</body>
+</html>
