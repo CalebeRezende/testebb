@@ -1,90 +1,130 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulta de Versículos da Bíblia</title>
+    <title>Calculadora de Carga Elétrica por Circuito</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            background: #f4f6f9;
             padding: 20px;
-            text-align: center;
+            max-width: 600px;
+            margin: auto;
         }
 
         h1 {
-            color: #333;
+            text-align: center;
+            color: #2c3e50;
         }
 
-        input[type="text"] {
-            width: 80%;
+        select, input, button {
+            width: 100%;
             padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            margin: 8px 0;
+            font-size: 16px;
         }
 
         button {
-            padding: 10px 20px;
-            border: none;
-            background-color: #5c6bc0;
+            background: #2ecc71;
             color: white;
+            border: none;
             cursor: pointer;
-            border-radius: 4px;
         }
 
         button:hover {
-            background-color: #3f51b5;
+            background: #27ae60;
         }
 
-        .versiculo {
-            background-color: #fff;
-            padding: 20px;
+        .resultado {
             margin-top: 20px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 16px;
         }
 
-        footer {
-            margin-top: 40px;
-            color: #777;
+        .ok {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .erro {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        ul {
+            padding-left: 20px;
         }
     </style>
 </head>
 <body>
 
-    <h1>Consulta de Versículos da Bíblia</h1>
-    <input type="text" id="busca" placeholder="Digite um livro, capítulo e versículo (Ex: João 3:16)">
-    <button onclick="buscarVersiculo()">Buscar</button>
+<h1>Calculadora de Uso Concomitante</h1>
 
-    <div id="resultado" class="versiculo"></div>
+<label for="circuito">Selecione o circuito:</label>
+<select id="circuito">
+    <option value="600">Iluminação Geral (600 W)</option>
+    <option value="2300">Tomada Cozinha (2300 W)</option>
+    <option value="1800">Tomada Área de Serviço (1800 W)</option>
+    <option value="1400">Tomada Uso Geral (1400 W)</option>
+    <option value="700">Ar-condicionado 220V (700 W)</option>
+</select>
 
-    <footer>
-        <p>&copy; 2024 Consulta de Versículos</p>
-    </footer>
+<label for="potencia">Potência do aparelho (W):</label>
+<input type="number" id="potencia" placeholder="Ex: 800">
 
-    <script>
-        const versiculos = {
-            "João 3:16": "Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, para que todo aquele que nele crê não pereça, mas tenha a vida eterna.",
-            "Salmos 23:1": "O Senhor é o meu pastor, nada me faltará.",
-            "Filipenses 4:13": "Posso todas as coisas em Cristo que me fortalece."
-        };
+<button onclick="adicionar()">Adicionar aparelho</button>
 
-        function buscarVersiculo() {
-            const busca = document.getElementById('busca').value.trim();
-            const resultado = document.getElementById('resultado');
+<ul id="lista"></ul>
 
-            if (versiculos[busca]) {
-                resultado.textContent = versiculos[busca];
-            } else {
-                resultado.textContent = "Versículo não encontrado. Tente outro.";
-            }
+<button onclick="calcular()">Calcular carga total</button>
+
+<div id="resultado"></div>
+
+<script>
+    let cargas = [];
+
+    function adicionar() {
+        const potencia = Number(document.getElementById("potencia").value);
+
+        if (!potencia || potencia <= 0) {
+            alert("Informe uma potência válida.");
+            return;
         }
-    </script>
+
+        cargas.push(potencia);
+
+        const lista = document.getElementById("lista");
+        const item = document.createElement("li");
+        item.textContent = potencia + " W";
+        lista.appendChild(item);
+
+        document.getElementById("potencia").value = "";
+    }
+
+    function calcular() {
+        const limite = Number(document.getElementById("circuito").value);
+        const total = cargas.reduce((a, b) => a + b, 0);
+
+        const resultado = document.getElementById("resultado");
+
+        if (total <= limite) {
+            resultado.className = "resultado ok";
+            resultado.innerHTML = `
+                ✅ Carga total: <strong>${total} W</strong><br>
+                Limite do circuito: <strong>${limite} W</strong><br>
+                Situação: dentro do permitido.
+            `;
+        } else {
+            resultado.className = "resultado erro";
+            resultado.innerHTML = `
+                ⚠️ Carga total: <strong>${total} W</strong><br>
+                Limite do circuito: <strong>${limite} W</strong><br>
+                Situação: <strong>EXCEDE o limite do disjuntor!</strong>
+            `;
+        }
+    }
+</script>
 
 </body>
 </html>
