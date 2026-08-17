@@ -1,17 +1,50 @@
 # Autoclicker para live do TikTok
 
-Script simples para Windows que fica clicando automaticamente em um
-ponto fixo da tela (o botao de coracao/"amei" da live), pra voce nao
-precisar tocar sem parar e cansar o dedo.
+Script simples (Windows e Linux) que fica clicando automaticamente em
+um ponto fixo da tela (o botao de coracao/"amei" da live), pra voce
+nao precisar tocar sem parar e cansar o dedo.
 
-## Instalacao
+E' o mesmo arquivo `tiktok_live_autoclicker.py` para os dois sistemas
+- so muda a forma de instalar as dependencias.
 
-1. Tenha Python 3.9+ instalado (https://www.python.org/downloads/).
-2. Abra o terminal (PowerShell ou CMD) na pasta do projeto e rode:
+## Instalacao - Windows
+
+1. Instale o Python 3.9+ (https://www.python.org/downloads/) e marque
+   a opcao "Add python.exe to PATH" no instalador.
+2. Abra o PowerShell ou CMD na pasta do projeto e rode:
 
 ```
 pip install -r requirements.txt
 ```
+
+## Instalacao - Linux
+
+1. Instale Python 3 e o pip (normalmente ja vem instalado; se nao):
+
+```
+sudo apt install python3 python3-pip python3-venv   # Debian/Ubuntu
+sudo dnf install python3 python3-pip                # Fedora
+```
+
+2. (Recomendado) crie um ambiente virtual e instale as dependencias:
+
+```
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+3. **Importante - X11 vs Wayland:** o script usa `pyautogui`/`pynput`,
+   que so funcionam em sessoes **X11**. Se sua distro usa Wayland por
+   padrao (Ubuntu, Fedora recentes), verifique/troque para "Ubuntu on
+   Xorg" (ou equivalente) na tela de login antes de rodar o script.
+   Para checar qual voce esta usando:
+
+```
+echo $XDG_SESSION_TYPE
+```
+
+   Se aparecer `wayland`, troque a sessao para X11/Xorg no login.
 
 ## Como usar
 
