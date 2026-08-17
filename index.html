@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Autoclicker de Live do TikTok — Instalação</title>
+<style>
+  :root {
+    --bg: #f7f7f8;
+    --card: #ffffff;
+    --text: #1c1c1f;
+    --muted: #5b5b63;
+    --border: #e3e3e7;
+    --accent: #fe2c55;
+    --accent-2: #25f4ee;
+    --code-bg: #1c1c1f;
+    --code-text: #f2f2f4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121214;
+      --card: #1b1b1e;
+      --text: #f2f2f4;
+      --muted: #a3a3ab;
+      --border: #2e2e33;
+      --code-bg: #0c0c0d;
+      --code-text: #f2f2f4;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+  }
+  .wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 20px 80px;
+  }
+  header { text-align: center; margin-bottom: 40px; }
+  .badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  h1 { font-size: 1.9rem; margin: 0 0 10px; }
+  .subtitle { color: var(--muted); font-size: 1.05rem; max-width: 560px; margin: 0 auto; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 28px;
+    margin-bottom: 24px;
+  }
+  .card h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.25rem;
+    margin-top: 0;
+  }
+  .os-icon {
+    width: 26px; height: 26px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    background: var(--border);
+    font-size: 0.9rem;
+  }
+  ol { padding-left: 22px; margin: 16px 0 0; }
+  ol li { margin-bottom: 14px; }
+  ol li:last-child { margin-bottom: 0; }
+  code, pre code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.85em;
+  }
+  code {
+    background: var(--border);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  pre {
+    background: var(--code-bg);
+    color: var(--code-text);
+    padding: 14px 16px;
+    border-radius: 10px;
+    overflow-x: auto;
+    margin: 10px 0 0;
+  }
+  pre code { background: none; padding: 0; color: inherit; }
+  .note {
+    border-left: 3px solid var(--accent);
+    padding: 10px 16px;
+    background: color-mix(in srgb, var(--accent) 8%, transparent);
+    border-radius: 0 8px 8px 0;
+    font-size: 0.92rem;
+    margin-top: 16px;
+  }
+  .keys {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+  .key {
+    background: var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    flex: 1 1 200px;
+  }
+  .key b { display: block; font-family: ui-monospace, monospace; font-size: 1rem; margin-bottom: 2px; }
+  .downloads {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .downloads a {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 8px;
+    background: var(--text);
+    color: var(--bg);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  .downloads a.secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-top: 40px;
+  }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="badge">Uso pessoal &middot; acessibilidade</span>
+    <h1>Autoclicker de Live do TikTok</h1>
+    <p class="subtitle">
+      Script que clica sozinho num ponto fixo da tela — feito pra não precisar
+      ficar tocando "amei" sem parar durante uma live e cansar o dedo.
+      Mesmo script funciona em Windows e Linux.
+    </p>
+  </header>
+
+  <div class="card">
+    <h2>Baixar</h2>
+    <p>Pegue os arquivos do repositório antes de seguir o passo a passo:</p>
+    <div class="downloads">
+      <a href="https://raw.githubusercontent.com/CalebeRezende/testebb/claude/tiktok-like-automator-w9162s/tiktok_live_autoclicker.py" download>tiktok_live_autoclicker.py</a>
+      <a class="downloads secondary" href="https://raw.githubusercontent.com/CalebeRezende/testebb/claude/tiktok-like-automator-w9162s/requirements.txt" download>requirements.txt</a>
+      <a class="secondary" href="https://github.com/CalebeRezende/testebb/tree/claude/tiktok-like-automator-w9162s">Ver repositório</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><span class="os-icon">🪟</span> Instalar no Windows</h2>
+    <ol>
+      <li>
+        Instale o <a href="https://www.python.org/downloads/">Python 3.9+</a>.
+        No instalador, marque a caixa <b>"Add python.exe to PATH"</b> antes de clicar em Install.
+      </li>
+      <li>
+        Coloque <code>tiktok_live_autoclicker.py</code> e <code>requirements.txt</code>
+        na mesma pasta.
+      </li>
+      <li>
+        Abra o PowerShell (ou CMD) nessa pasta e instale as dependências:
+        <pre><code>pip install -r requirements.txt</code></pre>
+      </li>
+      <li>
+        Rode o script:
+        <pre><code>python tiktok_live_autoclicker.py</code></pre>
+      </li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2><span class="os-icon">🐧</span> Instalar no Linux</h2>
+    <ol>
+      <li>
+        Garanta que tem Python 3 e pip instalados:
+        <pre><code>sudo apt install python3 python3-pip python3-venv   # Debian/Ubuntu
+sudo dnf install python3 python3-pip                # Fedora</code></pre>
+      </li>
+      <li>
+        Crie um ambiente virtual (recomendado) e instale as dependências:
+        <pre><code>python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt</code></pre>
+      </li>
+      <li>
+        Rode o script:
+        <pre><code>python tiktok_live_autoclicker.py</code></pre>
+      </li>
+    </ol>
+    <div class="note">
+      <b>Atenção — X11 vs Wayland:</b> o script só funciona em sessões X11.
+      Se sua distro usa Wayland por padrão (Ubuntu/Fedora recentes), rode
+      <code>echo $XDG_SESSION_TYPE</code> pra checar; se aparecer <code>wayland</code>,
+      troque para "Xorg"/"on Xorg" na tela de login antes de rodar o script.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Como usar</h2>
+    <ol>
+      <li>Abra a live do TikTok e deixe a janela visível, sem minimizar.</li>
+      <li>Posicione o mouse exatamente em cima do botão de coração/"amei".</li>
+      <li>Use os atalhos abaixo para controlar o script.</li>
+    </ol>
+    <div class="keys">
+      <div class="key"><b>F8</b> marca a posição do botão</div>
+      <div class="key"><b>F6</b> liga / pausa os cliques</div>
+      <div class="key"><b>ESC</b> encerra o programa</div>
+    </div>
+    <div class="note">
+      Use com moderação: é uma ferramenta pra facilitar o uso pessoal (evitar
+      dor no dedo), não pra deixar rodando o dia inteiro. Cliques automatizados
+      em excesso podem ser entendidos pela plataforma como manipulação de
+      engajamento e a conta pode sofrer restrições.
+    </div>
+  </div>
+
+  <footer>
+    Código-fonte no <a href="https://github.com/CalebeRezende/testebb/tree/claude/tiktok-like-automator-w9162s">GitHub</a>.
+  </footer>
+
+</div>
+</body>
+</html>
